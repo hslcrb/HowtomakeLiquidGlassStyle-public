@@ -1,0 +1,30 @@
+{/* 기본 상태: 그라데이션 pill */}
+<div
+  className="absolute inset-0 rounded-full transition-opacity duration-200"
+  style={{
+    background: "linear-gradient(135deg, #00D4FF 0%, #00FF88 100%)",
+    opacity: isDragging ? 0.7 : 1,  // 드래그 시 약간 투명해짐
+  }}
+/>
+
+{/* 드래그 상태: glass overlay */}
+<div
+  className="absolute inset-0 rounded-full backdrop-blur-xl transition-opacity duration-200"
+  style={{
+    opacity: isDragging ? 1 : 0,
+    background: `linear-gradient(135deg,
+      rgba(255,255,255,0.4) 0%,
+      rgba(255,255,255,0.15) 50%,
+      rgba(255,255,255,0.25) 100%)`,
+  }}
+/>
+
+{/* 드래그 시 glow shadow 강화 */}
+<div
+  className="absolute inset-0 rounded-full border transition-all duration-200"
+  style={{
+    boxShadow: isDragging
+      ? "0 4px 24px rgba(0,229,160,0.6), inset 0 1px 1px rgba(255,255,255,0.5)"
+      : "0 2px 12px rgba(0,229,160,0.3), 0 0 20px rgba(0,212,255,0.2)",
+  }}
+/>

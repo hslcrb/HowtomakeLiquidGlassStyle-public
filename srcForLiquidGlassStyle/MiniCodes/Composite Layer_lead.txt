@@ -1,0 +1,11 @@
+// GPU 가속 (Composite)
+style={{
+  transform: `translateX(${x}px) scale(${scale})`,
+  opacity: isDragging ? 0.7 : 1,
+}}
+
+// CPU 레이아웃 (느림)
+style={{
+  left: `${x}px`,
+  width: `${width}px`,
+}}

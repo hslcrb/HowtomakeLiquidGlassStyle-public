@@ -1,0 +1,10 @@
+// 필수 상태 변수들
+const [isDragging, setIsDragging] = useState(false);
+const [hasDragged, setHasDragged] = useState(false);  // 클릭 vs 드래그 구분
+const [dragX, setDragX] = useState<number | null>(null);
+
+// Ref로 초기값 저장 (리렌더링 방지)
+const startXRef = useRef(0);       // 드래그 시작 지점
+const startPillXRef = useRef(0);   // pill의 초기 위치
+
+const DRAG_THRESHOLD = 5;  // 5px 이상 이동해야 드래그로 인식

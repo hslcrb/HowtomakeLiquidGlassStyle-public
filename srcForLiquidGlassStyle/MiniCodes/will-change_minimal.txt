@@ -1,0 +1,9 @@
+/* 잘못된 사용 */
+.glass-element {
+  will-change: transform, opacity, background, box-shadow;
+}
+
+/* 올바른 사용 - 드래그 중에만 */
+.glass-element.is-dragging {
+  will-change: transform;
+}

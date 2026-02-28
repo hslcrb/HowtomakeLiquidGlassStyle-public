@@ -1,0 +1,23 @@
+<div className="relative inline-flex items-center p-1 rounded-full overflow-hidden">
+  {/* Layer 1: Base glass */}
+  <div className="absolute inset-0 rounded-full bg-white/[0.04] backdrop-blur-xl" />
+
+  {/* Layer 2: Top gradient (Fresnel simulation) */}
+  <div className="absolute inset-0 rounded-full bg-gradient-to-b from-white/[0.08] to-transparent" />
+
+  {/* Layer 3: Border with inset shadows */}
+  <div className="absolute inset-0 rounded-full border border-white/[0.12]
+    shadow-[inset_0_1px_1px_rgba(255,255,255,0.1),inset_0_-1px_1px_rgba(0,0,0,0.1)]" />
+
+  {/* Layer 4: Dynamic light */}
+  <div className="absolute inset-0 rounded-full overflow-hidden pointer-events-none">
+    <div
+      className="absolute w-[200%] h-[200%] -top-1/2 -left-1/2
+        bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.12)_0%,transparent_50%)]"
+      style={{ transform: `rotate(${lightAngle}deg)` }}
+    />
+  </div>
+
+  {/* Content */}
+  <div className="relative z-10">{children}</div>
+</div>

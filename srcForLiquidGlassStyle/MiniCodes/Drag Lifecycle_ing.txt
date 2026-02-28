@@ -1,0 +1,17 @@
+const handleDragMove = useCallback((clientX: number) => {
+  if (!isDragging) return;
+
+  const deltaX = clientX - startXRef.current;
+
+  // 실제 드래그인지 판별
+  if (Math.abs(deltaX) > DRAG_THRESHOLD) {
+    setHasDragged(true);
+  }
+
+  // Elastic boundary (고무줄 효과)
+  let newX = startPillXRef.current + deltaX;
+  const elasticRange = 8;  // 경계를 8px까지 넘어갈 수 있음
+  newX = Math.max(-elasticRange, Math.min(maxX + elasticRange, newX));
+
+  setDragX(newX);
+}, [isDragging, maxX]);

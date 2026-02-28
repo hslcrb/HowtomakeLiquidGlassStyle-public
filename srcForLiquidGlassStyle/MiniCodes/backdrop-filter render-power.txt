@@ -1,0 +1,5 @@
+// 정적 요소에만 blur 적용
+<div className="backdrop-blur-xl">
+  {/* Pill은 별도 레이어로 분리 */}
+  <div className="relative z-10">{pill}</div>
+</div>

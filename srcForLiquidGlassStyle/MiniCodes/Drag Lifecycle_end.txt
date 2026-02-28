@@ -1,0 +1,12 @@
+const handleDragEnd = useCallback(() => {
+  if (!isDragging) return;
+
+  if (hasDragged && dragX !== null) {
+    // 가장 가까운 탭으로 스냅
+    const closestTab = findClosestTab(dragX);
+    onTabChange(closestTab);
+  }
+
+  setIsDragging(false);
+  setDragX(null);  // spring animation 트리거
+}, [isDragging, hasDragged, dragX, findClosestTab, onTabChange]);

@@ -1,0 +1,23 @@
+// Global Event Listeners (터치/마우스 공통)
+
+useEffect(() => {
+  if (!isDragging) return;
+
+  const handleMouseMove = (e: MouseEvent) => handleDragMove(e.clientX);
+  const handleTouchMove = (e: TouchEvent) => handleDragMove(e.touches[0].clientX);
+  const handleMouseUp = () => handleDragEnd();
+  const handleTouchEnd = () => handleDragEnd();
+
+  // 전역 리스너 등록 (컴포넌트 밖에서도 드래그 추적)
+  window.addEventListener("mousemove", handleMouseMove);
+  window.addEventListener("mouseup", handleMouseUp);
+  window.addEventListener("touchmove", handleTouchMove, { passive: true });
+  window.addEventListener("touchend", handleTouchEnd);
+
+  return () => {
+    window.removeEventListener("mousemove", handleMouseMove);
+    window.removeEventListener("mouseup", handleMouseUp);
+    window.removeEventListener("touchmove", handleTouchMove);
+    window.removeEventListener("touchend", handleTouchEnd);
+  };
+}, [isDragging, handleDragMove, handleDragEnd]);

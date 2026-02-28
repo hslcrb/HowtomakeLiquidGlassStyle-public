@@ -1,0 +1,6 @@
+const handleDragStart = useCallback((clientX: number) => {
+  setIsDragging(true);
+  setHasDragged(false);
+  startXRef.current = clientX;
+  startPillXRef.current = currentPillPosition;
+}, [currentPillPosition]);

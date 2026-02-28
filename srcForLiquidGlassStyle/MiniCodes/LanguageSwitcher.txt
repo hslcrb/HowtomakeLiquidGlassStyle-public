@@ -1,0 +1,39 @@
+<div
+  className="absolute top-1 bottom-1 w-[28px] rounded-full"
+  style={{
+    transform: `translateX(${pillPosition}px) scale(${isDragging ? 1.08 : 1})`,
+    transition: isDragging
+      ? "transform 150ms cubic-bezier(0.34, 1.56, 0.64, 1)"
+      : "transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1)"
+  }}
+>
+  {/* Solid state (기본) */}
+  <div
+    className="absolute inset-0 rounded-full bg-white transition-opacity duration-200"
+    style={{ opacity: isDragging ? 0 : 1 }}
+  />
+
+  {/* Glass state (드래그 시) */}
+  <div
+    className="absolute inset-0 rounded-full backdrop-blur-xl transition-opacity duration-200"
+    style={{
+      opacity: isDragging ? 1 : 0,
+      background: `linear-gradient(135deg,
+        rgba(255,255,255,0.4) 0%,
+        rgba(255,255,255,0.15) 50%,
+        rgba(255,255,255,0.25) 100%)`
+    }}
+  />
+
+  {/* Caustics (드래그 시 빛 굴절 패턴) */}
+  <div
+    className="absolute inset-0 rounded-full overflow-hidden transition-opacity duration-200"
+    style={{ opacity: isDragging ? 1 : 0 }}
+  >
+    <div style={{
+      background: `
+        radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.6) 0%, transparent 40%),
+        radial-gradient(ellipse at 70% 80%, rgba(255,255,255,0.3) 0%, transparent 30%)`
+    }} />
+  </div>
+</div>

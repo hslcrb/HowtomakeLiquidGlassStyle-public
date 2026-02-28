@@ -1,0 +1,1 @@
+style={{ transform: `rotate(${lightAngle}deg)` }}
